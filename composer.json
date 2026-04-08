@@ -5,7 +5,9 @@
         }
     },
     "require": {
-        "php": "8.5.1",
-        "ext-pdo": "*"
+        "php": "^8.5",
+        "ext-pdo": "*",
+        "psr/http-message": "^2.0",
+        "nyholm/psr7": "^1.8"
     }
 }

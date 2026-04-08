@@ -10,16 +10,18 @@ use Alura\Mvc\Repository\VideoRepository;
 class VideoListController implements Controller
 {
     use HtmlRendererTrait;
-    }
+
     public function __construct(private VideoRepository $videoRepository)
     {
-    
+    }
 
     public function processaRequisicao(): void
     {
-        
         $videoList = $this->videoRepository->all();
-         echo $this->renderTemplate('video-list'
-            , ['videoList' => $videoList]);
+        
+        echo $this->renderTemplate(
+            'video-list',
+            ['videoList' => $videoList]
+        );
     }
 }
