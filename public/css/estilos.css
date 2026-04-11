@@ -106,26 +106,15 @@ body > header {
     cursor: pointer;
 }
 
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.container {
-    margin-top: 100px;
-}
-.formulario__titulo.erro {
-        color: red;
-        margin-top: 1rem;
-    }
-
 @media(min-width: 834px) {
 
     body {
         height: 100vh;
     }
 
-    
+}
+
+.formulario__titulo.erro {
+    color: red;
+    margin-top: 1rem;
 }

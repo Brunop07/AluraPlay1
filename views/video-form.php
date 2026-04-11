@@ -5,7 +5,6 @@ require_once __DIR__ . '/inicio-html.php';
 <main class="container">
     <form class="container__formulario"
           enctype="multipart/form-data"
-          action="<?= $video?->id ? '/editar-video?id=' . $video->id : '/novo-video'; ?>"  
           method="post">
         <h2 class="formulario__titulo">Envie um vídeo!</h2>
         <div class="formulario__campo">
@@ -33,9 +32,7 @@ require_once __DIR__ . '/inicio-html.php';
             <input name="image"
                    accept="image/*"
                    type="file"
-                   value="<?= $video?->imagePath; ?>"                
                    class="campo__escrita"
-                   placeholder="Neste campo, dê o nome do vídeo"
                    id='image' />
         </div>
 

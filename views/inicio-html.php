@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -31,10 +28,10 @@ session_start();
     </nav>
 
 </header>
-<?php if (isset($_SESSION['erro_mensagem'])): ?> 
-    <h2 class="formulario__titulo erro">
-        <?= $_SESSION['erro_mensagem']; ?>
-    </h2>
-<?php endif; ?>
 
-<?php unset($_SESSION['erro_mensagem']); ?>
+<?php if (isset($_SESSION['error_message'])): ?>
+<h2 class="formulario__titulo erro">
+    <?= $_SESSION['error_message']; ?>
+    <?php unset($_SESSION['error_message']); ?>
+</h2>
+<?php endif; ?>

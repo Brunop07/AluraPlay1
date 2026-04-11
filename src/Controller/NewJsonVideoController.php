@@ -5,28 +5,25 @@ declare(strict_types=1);
 namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\Video;
-use Alura\Mvc\Controller\Controller;
 use Alura\Mvc\Repository\VideoRepository;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class NewJsonVideoListController implements Controller
+class NewJsonVideoController implements RequestHandlerInterface
 {
     public function __construct(private VideoRepository $videoRepository)
     {
     }
 
-    public function processaRequisicao(): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        ob_clean();
-        $request = file_get_contents('php://input');
-        $videodata = json_decode($request, true);
-        $video = new Video();
-        $video->url = $videodata['url'];
-        $video->title = $videodata['titulo'];
+        $request = $request->getBody()->getContents();
+        $videoData = json_decode($request, true);
+        $video = new Video($videoData['url'], $videoData['title']);
         $this->videoRepository->add($video);
 
-        http_response_code(201);
-        header('Content-Type: application/json');
-
-        
+        return new Response(201);
     }
 }
