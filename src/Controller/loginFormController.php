@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
-use Legue\Plates\Engine;
+use League\Plates\Engine;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,6 +26,6 @@ class LoginFormController implements RequestHandlerInterface
             ]);
         }
 
-        return new Response(200, body: $this->template->render('login-form'));
+        return new Response(200, body: $this->templateEngine->render('login-form'));
     }
 }

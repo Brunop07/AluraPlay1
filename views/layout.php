@@ -35,3 +35,7 @@
     <?php unset($_SESSION['error_message']); ?>
 </h2>
 <?php endif; ?>
+
+<?= $this->section('content'); ?>
+</body>
+</html>

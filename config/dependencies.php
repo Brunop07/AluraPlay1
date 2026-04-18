@@ -1,13 +1,23 @@
 <?php
 
 $builder = new \DI\ContainerBuilder();
+
 $builder->addDefinitions([
     PDO::class => function (): PDO {
-        return new PDO('mysql:' . __DIR__ . '/../criar-banco.php');
+        return new PDO(
+            'mysql:host=localhost;dbname=Aluraplay1;charset=utf8mb4',
+        'root',
+        'Testealuraplay',
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            ]
+        );
     },
-    \league\Plates\Engine::class => function () {
-        $templatePath = __DIR__ . '/../../Views';
-        return new \league\Plates\Engine($templatePath);
+
+    \League\Plates\Engine::class => function () {
+        $templatePath = __DIR__ . '/../Views';
+        return new \League\Plates\Engine($templatePath);
     },
 ]);
 
